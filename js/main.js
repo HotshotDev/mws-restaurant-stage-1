@@ -91,7 +91,7 @@ fillCuisinesHTML = (cuisines = self.cuisines) => {
     scrollwheel: false
   });
   updateRestaurants();
-} */
+} 
 
 /**
  * Update page and map for current restaurants.
@@ -187,4 +187,4 @@ createRestaurantHTML = (restaurant) => {
     });
     self.markers.push(marker);
   });
-} 
+}
