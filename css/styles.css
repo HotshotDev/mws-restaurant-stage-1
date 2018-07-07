@@ -1,5 +1,8 @@
 @charset "utf-8";
 /* CSS Document */
+html {
+  width: 100%;
+}
 
 body,td,th,p{
 	font-family: Arial, Helvetica, sans-serif;
@@ -37,6 +40,8 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 }
 #maincontent {
   background-color: #f3f3f3;
+  width: 100%;
+  max-width: 1500px;
   min-height: 100%;
 }
 #footer {
@@ -53,7 +58,9 @@ nav {
   width: 100%;
   height: 80px;
   background-color: #252831;
+  justify-content: center;
   text-align:center;
+  display: flex;
 }
 nav h1 {
   margin: auto;
@@ -69,19 +76,22 @@ nav h1 a {
     padding: 10px 40px 16px;
     list-style: none;
     background-color: #eee;
+    align-items: baseline;
     font-size: 17px;
     margin: 0;
-    width: calc(50% - 80px);
+    width: 40px;
+    display: flex;
+    flex-direction: row;
 }
 
 /* Display list items side by side */
 #breadcrumb li {
-    display: inline;
+    display: flex;
 }
 
 /* Add a slash symbol (/) before/behind each list item */
 #breadcrumb li+li:before {
-    padding: 8px;
+    padding: 5px;
     color: black;
     content: "/\00a0";
 }
@@ -106,12 +116,13 @@ nav h1 a {
 /* ====================== Restaurant Filtering ====================== */
 .filter-options {
   width: 100%;
-  height: 50px;
+  height: 70px;
   background-color: #3397DB;
   align-items: center;
 }
 .filter-options h2 {
   color: white;
+  padding-top: 6px;
   font-size: 1rem;
   font-weight: normal;
   line-height: 1;
@@ -141,11 +152,12 @@ nav h1 a {
   background-color: #fff;
   border: 2px solid #ccc;
   font-family: Arial,sans-serif;
+  display: inline-block;
   margin: 15px;
   min-height: 380px;
   padding: 0 30px 25px;
   text-align: left;
-  width: 270px;
+  width: 290px;
 }
 #restaurants-list .restaurant-img {
   background-color: #ccc;
@@ -205,7 +217,7 @@ nav h1 a {
 .inside #footer {
   bottom: 0;
   position: absolute;
-  width: 50%;
+  width: calc(50% - 50px);
 }
 #restaurant-name {
   color: #f18200;
@@ -239,11 +251,26 @@ nav h1 a {
 #restaurant-container, #reviews-container {
   border-bottom: 1px solid #d9d9d9;
   border-top: 1px solid #fff;
+  justify-content: center;
+  flex-direction: column;
   padding: 140px 40px 30px;
   width: 50%;
+  align-items: center;
+}
+#review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  background-color: #333;
 }
 #reviews-container {
   padding: 30px 40px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 #reviews-container h2 {
   color: #f58500;
@@ -253,8 +280,14 @@ nav h1 a {
   padding-bottom: 1pt;
 }
 #reviews-list {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
   margin: 0;
+  align-items: center;
+  justify-content: center;
   padding: 0;
+  margin-bottom: 80px;
 }
 #reviews-list li {
   background-color: #fff;
@@ -266,10 +299,67 @@ nav h1 a {
   padding: 0 20px 20px;
   position: relative;
   width: 85%;
+  text-align:justify;
 }
 #reviews-list li p {
-  margin: 0 0 10px;
+  margin: 0 12px 12px;
 }
 #restaurant-hours td {
   color: #666;
+}
+#reviews-list li p:first-child {
+  color: #fff;
+  margin: 5px 0 0 20px;
+}
+#reviews-list li p:nth-child(2) {
+  background-color: #ffa500;
+  border-radius: 5px;
+  display:inline-block;
+  padding: 5px;
+  color: #fff;
+  text-transform: uppercase;
+  margin: 10px 0 10px 15px;
+}
+#reviews-list li div p:nth-child(2) {
+  background-color: #333;
+  color: #ccc;
+  margin: 5px 10px 0 20px;
+  padding: 0;
+}
+@media only screen and (max-width: 800px) {
+  #restaurants-list li {
+    width: 90%;
+    margin: 2%;
+    padding: 2%;
+  }
+  .filter-options {
+    text-align: center;
+  }
+  .filter-options select {
+    margin: 2%;
+    padding: 0 0px;
+    width: 45%;
+  }
+  #breadcrumb {
+    width: 100%;
+  }
+  .inside #map-container {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 500px;
+  }
+  #restaurant-name {
+    margin-top: 25px;
+  }
+  #reviews-container h2 {
+    margin-bottom: -5px;
+  }
+  #restaurant-container, #reviews-container {
+    width: 100%;
+  }
+  .inside #footer {
+    width: calc(100% - 50px);
+  }
 }
