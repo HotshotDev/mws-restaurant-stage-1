@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 });
 
 /**
- * Initialize leaflet map
+ * Initialize google map
  */
 
  window.initMap = () => {
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
       DBHelper.mapMarkerForRestaurant(self.restaurant, self.map);
     }
   });
-} 
+}
 
 /**
  * Get current restaurant from page URL.
