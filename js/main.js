@@ -165,23 +165,21 @@ createRestaurantHTML = (restaurant) => {
 
   return li
 }
+//Service worker
+
+if (navigator.serviceWorker) {
+	navigator.serviceWorker.register('./sw.js').then(function() {
+			console.log('Registration worked!');
+    })
+    .catch(function() {
+			console.log('Registration failed!');
+		});
+}
 
 /**
  * Add markers for current restaurants to the map.
  */
-addMarkersToMap = (restaurants = self.restaurants) => {
-  restaurants.forEach(restaurant => {
-    // Add marker to the map
-    const marker = DBHelper.mapMarkerForRestaurant(restaurant, self.newMap);
-    marker.on("click", onClick);
-    function onClick() {
-      window.location.href = marker.options.url;
-    }
-    self.markers.push(marker);
-  });
-
-}
-/* addMarkersToMap = (restaurants = self.restaurants) => {
+ addMarkersToMap = (restaurants = self.restaurants) => {
   restaurants.forEach(restaurant => {
     // Add marker to the map
     const marker = DBHelper.mapMarkerForRestaurant(restaurant, self.map);
@@ -190,4 +188,4 @@ addMarkersToMap = (restaurants = self.restaurants) => {
     });
     self.markers.push(marker);
   });
-} */
+}
