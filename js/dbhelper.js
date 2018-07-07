@@ -175,6 +175,6 @@ class DBHelper {
       animation: google.maps.Animation.DROP}
     );
     return marker;
-  } *
+  } 
 
 }

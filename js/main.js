@@ -4,15 +4,6 @@ let restaurants,
 var newMap
 var markers = []
 
-if (navigator.serviceWorker) {
-  navigator.serviceWorker.register('./sw.js').then(function() {
-    console.log('Registration Worked!');
-  })
-  .catch(function() {
-    console.log('Registration Failed!');
-  });
-}
-
 /**
  * Fetch neighborhoods and cuisines as soon as the page is loaded.
  */
@@ -78,7 +69,7 @@ fillCuisinesHTML = (cuisines = self.cuisines) => {
 }
 
 /**
- * Initialize Google Map, called from HTML.
+ * Initialize leaflet map, called from HTML.
  */
  window.initMap = () => {
   let loc = {
@@ -91,7 +82,7 @@ fillCuisinesHTML = (cuisines = self.cuisines) => {
     scrollwheel: false
   });
   updateRestaurants();
-} 
+}
 
 /**
  * Update page and map for current restaurants.
@@ -178,7 +169,19 @@ createRestaurantHTML = (restaurant) => {
 /**
  * Add markers for current restaurants to the map.
  */
- addMarkersToMap = (restaurants = self.restaurants) => {
+addMarkersToMap = (restaurants = self.restaurants) => {
+  restaurants.forEach(restaurant => {
+    // Add marker to the map
+    const marker = DBHelper.mapMarkerForRestaurant(restaurant, self.newMap);
+    marker.on("click", onClick);
+    function onClick() {
+      window.location.href = marker.options.url;
+    }
+    self.markers.push(marker);
+  });
+
+}
+/* addMarkersToMap = (restaurants = self.restaurants) => {
   restaurants.forEach(restaurant => {
     // Add marker to the map
     const marker = DBHelper.mapMarkerForRestaurant(restaurant, self.map);
@@ -187,4 +190,4 @@ createRestaurantHTML = (restaurant) => {
     });
     self.markers.push(marker);
   });
-}
+} */
