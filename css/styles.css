@@ -36,7 +36,6 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 }
 #maincontent {
   width: 100%;
-  max-width: 1500px;
   background-color: #f3f3f3;
   min-height: 100%;
 }
